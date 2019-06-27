@@ -1,0 +1,10 @@
+.cproject
+.settings/
+.project
+*.o
+*.a
+Lime/lime/examples/lime_contents
+Lime/lime/examples/lime_extract_record
+Lime/lime/examples/lime_extract_type
+Lime/lime/examples/lime_pack
+Lime/lime/examples/lime_unpack

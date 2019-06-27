@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+#$ -l arch=amd64
+#$ -l os=sl5
+# k:m:n --> from k-1 to m-1 step n
+#$ -t 1000:1000:1
+#$ -N sl_spectrum
+#$ -S /bin/zsh
+#$ -l h_cpu=4:00:00
+#$ -l h_vmem=3G
+#$ -cwd
+
+# Generate input files, which contain the task ids:
+# echo ${SGE_TASK_ID} > qsub_input_${SGE_TASK_ID}.txt
+
+# Submit the jobs:
+# ./string_breaking_ts < qsub_input_${SGE_TASK_ID}.txt
+./sl_spectrum

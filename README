@@ -1,0 +1,37 @@
+in order to compile this code you'll need
+
+- lapack and blas being installed
+
+- a fresh version of lime being installed
+
+  since we are going to use c-lime in C++, please make sure that
+  lime.h looks something like
+
+#ifndef LIME_H
+#define LIME_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
+#include <lime_config.h>
+...
+#include <lime_reader.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+
+
+There are Makefiles available where compiler options, path and
+libraries need to be adjusted. You'll also need to find out whether on
+your system fortran has a trailing underscore or not. This can be
+controlled in the code by defining or not defining F_, e.g. via the
+command line option of your c++-compiler like -DF_ for defining, and
+nothing for not defining. Linux usually has an underscore.
+
+
+

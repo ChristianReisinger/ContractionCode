@@ -1,0 +1,4 @@
+cd /panfs/group/nic/mcwagner/ContractionCode64/Lime/lime/
+make clean
+./configure
+make
