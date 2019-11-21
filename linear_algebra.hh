@@ -2565,6 +2565,7 @@ inline void minus_i_times_gamma(int per[], int sig[]) {
 }
 
 inline void minus_gamma(int per[], int sig[]) {
+	(void) per; //TODO unused - correct?
 	for (int i = 0; i < 24; i++) {
 		sig[i] *= -1;
 	}
