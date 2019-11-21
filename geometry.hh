@@ -38,6 +38,7 @@ inline unsigned long int get_index(const int t, const int x, const int y, const 
 
 inline unsigned long int get_index_timeslice(const int x, const int y, const int z, const int T, const int L)
 {
+  (void) T; //unused
   unsigned long int xx = (x+L)%L;
   unsigned long int yy = (y+L)%L;
   unsigned long int zz = (z+L)%L;
@@ -47,6 +48,8 @@ inline unsigned long int get_index_timeslice(const int x, const int y, const int
 
 inline unsigned long int get_index_timeslice_t(const int t, const int x, const int y, const int z, const int T, const int L)
 {
+  (void) t; //unused
+  (void) T; //unused
   unsigned long int xx = (x+L)%L;
   unsigned long int yy = (y+L)%L;
   unsigned long int zz = (z+L)%L;
