@@ -7,15 +7,16 @@
 
 // ********************
 
-#include "smearing_techniques.hh"
-
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <omp.h>
 
 #include "fields.hh"
 #include "geometry.hh"
+
+#include "smearing_techniques.hh"
 
 // ********************
 
@@ -892,17 +893,16 @@ void HYP_Time_Links(double *gauge_field, int T, int L, double time_link_alpha1, 
 // Performs an APE smearing step.
 
 void APE_Smearing_Step(double *smeared_gauge_field, int T, int L, double APE_smearing_alpha) {
-	int it, ix, iy, iz;
-	double M1[18], M2[18];
 
 	double *smeared_gauge_field_old;
 	Gauge_Field_Alloc(&smeared_gauge_field_old, T, L);
 	Gauge_Field_Copy(smeared_gauge_field_old, smeared_gauge_field, T, L);
 
-	for (it = 0; it < T; it++) {
-		for (ix = 0; ix < L; ix++) {
-			for (iy = 0; iy < L; iy++) {
-				for (iz = 0; iz < L; iz++) {
+#pragma omp parallel for collapse(4)
+	for (int it = 0; it < T; it++) {
+		for (int ix = 0; ix < L; ix++) {
+			for (int iy = 0; iy < L; iy++) {
+				for (int iz = 0; iz < L; iz++) {
 					int index;
 
 					int index_mx_1, index_mx_2, index_mx_3;
@@ -913,6 +913,7 @@ void APE_Smearing_Step(double *smeared_gauge_field, int T, int L, double APE_sme
 					int index_pz_1, index_pz_2, index_pz_3;
 
 					double *U;
+					double M1[18], M2[18];
 
 					// **********
 					// Links in x-direction.

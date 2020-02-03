@@ -55,7 +55,7 @@ ranlxs.o: ranlxs.h ranlxs.c
 	${CXX} ${INCLUDE} ${CXXFLAGS} -c -o ranlxs.o ranlxs.c
 
 smearing_techniques.o: smearing_techniques.cc smearing_techniques.hh
-	${CXX} ${INCLUDE} ${CXXFLAGS} -c -o $@ $<
+	${CXX} ${INCLUDE} ${CXXFLAGS} -c -o $@ $< -fopenmp
 
 Wilson_loops.o: Wilson_loops.cc Wilson_loops.hh
 	${CXX} ${INCLUDE} ${CXXFLAGS} -c -o $@ $<
